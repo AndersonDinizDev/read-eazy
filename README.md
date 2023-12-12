@@ -1,15 +1,15 @@
 # Read-Eazy
 
 <p align="center">
-  <img alt="Linguagem principal do GitHub" src="https://img.shields.io/github/languages/top/andersondinizdev/clinic-web?style=for-the-badge">
+  <img alt="Linguagem principal do GitHub" src="https://img.shields.io/github/languages/top/andersondinizdev/read-eazy?style=for-the-badge">
   
-  <img alt="Contagem de linguagens do GitHub" src="https://img.shields.io/github/languages/count/andersondinizdev/clinic-web?style=for-the-badge">
+  <img alt="Contagem de linguagens do GitHub" src="https://img.shields.io/github/languages/count/andersondinizdev/read-eazy?style=for-the-badge">
   
-  <img alt="Tamanho do repositório do GitHub" src="https://img.shields.io/github/repo-size/andersondinizdev/clinic-web?style=for-the-badge">
+  <img alt="Tamanho do repositório do GitHub" src="https://img.shields.io/github/repo-size/andersondinizdev/read-eazy?style=for-the-badge">
 
-  <img alt="Forks do GitHub" src="https://img.shields.io/github/forks/andersondinizdev/clinic-web?style=for-the-badge">
+  <img alt="Forks do GitHub" src="https://img.shields.io/github/forks/andersondinizdev/read-eazy?style=for-the-badge">
     
-  <img alt="Estrelas do GitHub" src="https://img.shields.io/github/stars/andersondinizdev/clinic-web?style=for-the-badge"/>
+  <img alt="Estrelas do GitHub" src="https://img.shields.io/github/stars/andersondinizdev/read-eazy?style=for-the-badge"/>
 
 </p>
 
