@@ -1,0 +1,28 @@
+version: "2"
+services:
+    www:
+        build: .
+        ports: 
+            - "3001:80"
+        volumes:
+            - ./www:/var/www/html/
+        links:
+            - db
+        networks:
+            - default
+    db:
+        image: mysql
+        ports: 
+            - "3030:3306"
+        environment:
+            MYSQL_DATABASE: readeazy
+            MYSQL_USER: admin
+            MYSQL_PASSWORD: admin
+            MYSQL_ROOT_PASSWORD: admin
+        volumes:
+            - ./dump:/docker-entrypoint-initdb.d
+            - persistent:/var/lib/mysql
+        networks:
+            - default
+volumes:
+    persistent:
