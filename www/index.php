@@ -70,17 +70,17 @@
 
         <form class="login-form" id="login-form">
             <h3>Entrar</h3>
-            <span>Nome de usuário</span>
-            <input type="email" name="email" class="box" placeholder="enter your email" id="email">
-            <span>password</span>
-            <input type="password" name="password" class="box" placeholder="enter your password" id="password">
+            <span>Email</span>
+            <input type="email" name="email" class="box is-invalid" placeholder="Insira seu email" id="email">
+            <span>Senha</span>
+            <input type="password" name="password" class="box" placeholder="Insira sua senha" id="password">
             <div class="checkbox">
                 <input type="checkbox" name="remember-me" id="remember-me">
                 <label for="remember-me"> Lembrar </label>
             </div>
-            <input id="button-submit" type="button" value="sign in" class="btn">
-            <p>Esqueceu a senha? ? <a href="#">clique aqui</a></p>
-            <p>Não tem uma conta ? <a id="register-form-button" href="#">Criar uma conta</a></p>
+            <input id="button-submit" type="button" value="Logar" class="btn">
+            <p>Esqueceu a senha ? <a href="#">Clique aqui</a></p>
+            <p>Não tem uma conta ? <a id="register-form-button" href="#">Clique aqui</a></p>
         </form>
 
         <form id="register-form" class="register-form">
@@ -88,11 +88,11 @@
             <span>Nome</span>
             <input type="email" name="r-name" class="box" placeholder="Digite seu nome" id="r-name">
             <span>Email</span>
-            <input type="text" name="r-email" class="box" placeholder="enter your email" id="r-email">
+            <input type="text" name="r-email" class="box" placeholder="Insira seu email" id="r-email">
             <span>Senha</span>
             <input type="password" name="r-password" class="box" placeholder="Insira uma senha" id="r-password">
             <span>Confirme sua senha</span>
-            <input type="password" name="r-password" class="box" placeholder="Insiria sua senha novamente" id="r-c-password">
+            <input type="password" name="r-password" class="box" placeholder="Insira sua senha novamente" id="r-c-password">
             <input id="button-register" type="button" value="Cadastrar" class="btn">
             <p>Já possui uma conta ? <a id="login-form-button" href="#">clique aqui</a></p>
         </form>

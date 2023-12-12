@@ -3,8 +3,19 @@ const passwordInput = document.getElementById("password");
 const buttonSubmit = document.getElementById("button-submit");
 
 buttonSubmit.addEventListener("click", function () {
-  const userEmail = emailInput.value;
-  const userPassword = passwordInput.value;
+  const userEmail = emailInput.value.trim();
+  const userPassword = passwordInput.value.trim();
+
+  if (userEmail === "" || userPassword === "") {
+    alert("Por favor, preencha todos os campos.");
+    return;
+  }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(userEmail)) {
+    alert("Por favor, insira um endereço de email válido.");
+    return;
+  }
 
   fetch("/api/login_check.php", {
     method: "POST",
@@ -24,7 +35,7 @@ buttonSubmit.addEventListener("click", function () {
     })
     .then((data) => {
       if (data.login) {
-        alert("Credenciais validadas com sucesso !");
+        alert("Credenciais validadas com sucesso!");
 
         setTimeout(() => {
           window.location.assign("/");
