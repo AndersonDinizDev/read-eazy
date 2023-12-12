@@ -12,6 +12,21 @@ buttonRegister.addEventListener("click", function () {
   let password = userPassword.value;
   let cPassword = userCPassword.value;
 
+  if (name.trim() === "") {
+    alert("Por favor, preencha o campo de nome.");
+    return;
+  }
+
+  if (email.trim() === "" || !isValidEmail(email)) {
+    alert("Por favor, insira um email válido.");
+    return;
+  }
+
+  if (password.trim() === "" || password !== cPassword) {
+    alert("As senhas não coincidem ou estão vazias. Por favor, corrija.");
+    return;
+  }
+
   fetch("/api/register_user.php", {
     method: "POST",
     headers: {
@@ -41,13 +56,24 @@ buttonRegister.addEventListener("click", function () {
           setTimeout(() => {
             formRegister2.style.display = "none";
             formLogin2.style.opacity = "1";
+            userName.value = "";
+            userEmail.value = "";
+            userPassword.value = "";
+            userCPassword.value = "";
           });
         });
+      } else if (data.email_error) {
+        alert("Email já cadastrado no banco de dados.");
       } else {
         alert("Insira suas informações corretamente.");
       }
     })
     .catch((error) => {
-      alert("Oocrreu um erro ao cadastrar");
+      console.error("Erro na solicitação: " + error.message);
     });
 });
+
+function isValidEmail(email) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+}

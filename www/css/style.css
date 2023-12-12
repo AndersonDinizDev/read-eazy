@@ -381,6 +381,10 @@ section {
   text-decoration: underline;
 }
 
+.is-invalid {
+  border-color: red;
+}
+
 .home-container {
   background: url(../image/banner-bg.jpg) no-repeat;
   background-size: cover;
