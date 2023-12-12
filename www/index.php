@@ -1,3 +1,8 @@
+<?php
+session_start();
+ini_set('display_errors', 1);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -34,9 +39,16 @@
                 <div id="search-btn" class="fas fa-search"></div>
                 <a href="#" class="fas fa-heart"></a>
                 <a href="#" class="fas fa-shopping-cart"></a>
-                <div id="login-btn" class="fas fa-user"></div>
+                <div <?php if ($_SESSION['user-id']) {
+                            echo "style='display: none;'";
+                        }; ?> id="login-btn" class="fas fa-user"></div>
             </div>
-
+            <?php if ($_SESSION['user-id']) : ?>
+                <div class="user-login">
+                    <p style="font-size: 16px;"><?= $_SESSION['user-name'] ?></p>
+                    <a style="font-size: 12px;" type="button" href="api/logout.php">Sair</a>
+                </div>
+            <?php endif; ?>
         </section>
 
         <div class="header-2">
