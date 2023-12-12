@@ -19,8 +19,6 @@
 
 <body>
 
-
-
     <header class="header">
 
         <section class="header-1">
@@ -70,7 +68,7 @@
 
         <div id="close-login-btn" class="fas fa-times"></div>
 
-        <form>
+        <form class="login-form" id="login-form">
             <h3>Entrar</h3>
             <span>Nome de usuário</span>
             <input type="email" name="email" class="box" placeholder="enter your email" id="email">
@@ -82,11 +80,24 @@
             </div>
             <input id="button-submit" type="button" value="sign in" class="btn">
             <p>Esqueceu a senha? ? <a href="#">clique aqui</a></p>
-            <p>Não tem uma conta ? <a href="#">Criar uma conta</a></p>
+            <p>Não tem uma conta ? <a id="register-form-button" href="#">Criar uma conta</a></p>
+        </form>
+
+        <form id="register-form" class="register-form">
+            <h3>Cadastrar</h3>
+            <span>Nome</span>
+            <input type="email" name="r-name" class="box" placeholder="Digite seu nome" id="r-name">
+            <span>Email</span>
+            <input type="text" name="r-email" class="box" placeholder="enter your email" id="r-email">
+            <span>Senha</span>
+            <input type="password" name="r-password" class="box" placeholder="Insira uma senha" id="r-password">
+            <span>Confirme sua senha</span>
+            <input type="password" name="r-password" class="box" placeholder="Insiria sua senha novamente" id="r-c-password">
+            <input id="button-register" type="button" value="Cadastrar" class="btn">
+            <p>Já possui uma conta ? <a id="login-form-button" href="#">clique aqui</a></p>
         </form>
 
     </div>
-
 
     <div class="home-container">
 
@@ -797,7 +808,7 @@
     <!-- custom js file link  -->
     <script src="js/script.js"></script>
     <script src="js/login_check.js"></script>
-
+    <script src="js/register_user.js"></script>
 </body>
 
 </html>
