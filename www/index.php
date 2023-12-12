@@ -808,7 +808,7 @@
     <!-- custom js file link  -->
     <script src="js/script.js"></script>
     <script src="js/login_check.js"></script>
-
+    <script src="js/register_user.js"></script>
 </body>
 
 </html>
