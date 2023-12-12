@@ -1,6 +1,4 @@
 <?php
-
-require_once("../config/sec.php");
 require_once("../config/database.php");
 
 
@@ -26,9 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
   if (!$check) {
-    $response['success'] = false;
+    $response['login'] = false;
   } else {
-    $response['success'] = true;
+    $response['login'] = true;
   }
 }
 

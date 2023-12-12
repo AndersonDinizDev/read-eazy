@@ -70,7 +70,7 @@
 
         <div id="close-login-btn" class="fas fa-times"></div>
 
-        <form action="api/validade_login.php" method="POST">
+        <form>
             <h3>Entrar</h3>
             <span>Nome de usuário</span>
             <input type="email" name="email" class="box" placeholder="enter your email" id="email">
@@ -80,7 +80,7 @@
                 <input type="checkbox" name="remember-me" id="remember-me">
                 <label for="remember-me"> Lembrar </label>
             </div>
-            <input type="submit" value="sign in" class="btn">
+            <input id="button-submit" type="button" value="sign in" class="btn">
             <p>Esqueceu a senha? ? <a href="#">clique aqui</a></p>
             <p>Não tem uma conta ? <a href="#">Criar uma conta</a></p>
         </form>
@@ -792,26 +792,11 @@
     <div class="loader-container">
         <img src="image/loader-img.gif" alt="">
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 
     <!-- custom js file link  -->
     <script src="js/script.js"></script>
+    <script src="js/login_check.js"></script>
 
 </body>
 
