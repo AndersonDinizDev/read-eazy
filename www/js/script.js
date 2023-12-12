@@ -159,8 +159,10 @@ var swiper = new Swiper(".blogs-slider", {
 
 const registerFormButton = document.getElementById("register-form-button");
 const loginFormButton = document.getElementById("login-form-button");
+const recoverFormButton = document.getElementById("recover-form-button");
 const formLogin = document.getElementById("login-form");
 const formRegister = document.getElementById("register-form");
+const formRecover = document.getElementById("recover-password");
 
 registerFormButton.addEventListener("click", function () {
   formLogin.style.opacity = "0";
@@ -181,3 +183,14 @@ loginFormButton.addEventListener("click", function () {
     formLogin.style.opacity = "1";
   });
 });
+
+
+recoverFormButton.addEventListener("click", function() {
+  formLogin.style.opacity = "0";
+  formRecover.style.display = "block"
+
+  setTimeout(() => {
+    formRecover.style.opacity = "1";
+    formLogin.style.display = "none";
+  });
+})
