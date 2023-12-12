@@ -13,6 +13,10 @@
 
 </p>
 
+<p align="center">
+<img src="https://raw.githubusercontent.com/AndersonDinizDev/projects-thumbnail/master/read-eazy.png" alt="example image"/>
+ </p>
+
 ## Descrição:
 
 Loja online para venda de livros.
