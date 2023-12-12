@@ -1,53 +1,49 @@
-searchForm = document.querySelector('.search-form');
+searchForm = document.querySelector(".search-form");
 
-document.querySelector('#search-btn').onclick = () =>{
-  searchForm.classList.toggle('active');
-}
+document.querySelector("#search-btn").onclick = () => {
+  searchForm.classList.toggle("active");
+};
 
-let loginForm = document.querySelector('.login-form-container');
+let loginForm = document.querySelector(".login-form-container");
 
-document.querySelector('#login-btn').onclick = () =>{
-  loginForm.classList.toggle('active');
-}
+document.querySelector("#login-btn").onclick = () => {
+  loginForm.classList.toggle("active");
+};
 
-document.querySelector('#close-login-btn').onclick = () =>{
-  loginForm.classList.remove('active');
-}
+document.querySelector("#close-login-btn").onclick = () => {
+  loginForm.classList.remove("active");
+};
 
-window.onscroll = () =>{
+window.onscroll = () => {
+  searchForm.classList.remove("active");
 
-  searchForm.classList.remove('active');
-
-  if(window.scrollY > 93){
-    document.querySelector('.header .header-2').classList.add('active');
-  }else{
-    document.querySelector('.header .header-2').classList.remove('active');
+  if (window.scrollY > 93) {
+    document.querySelector(".header .header-2").classList.add("active");
+  } else {
+    document.querySelector(".header .header-2").classList.remove("active");
   }
+};
 
-}
-
-window.onload = () =>{
-
-  if(window.scrollY > 80){
-    document.querySelector('.header .header-2').classList.add('active');
-  }else{
-    document.querySelector('.header .header-2').classList.remove('active');
+window.onload = () => {
+  if (window.scrollY > 80) {
+    document.querySelector(".header .header-2").classList.add("active");
+  } else {
+    document.querySelector(".header .header-2").classList.remove("active");
   }
 
   fadeOut();
+};
 
+function loader() {
+  document.querySelector(".loader-container").classList.add("active");
 }
 
-function loader(){
-  document.querySelector('.loader-container').classList.add('active');
-}
-
-function fadeOut(){
+function fadeOut() {
   setTimeout(loader, 4000);
 }
 
 var swiper = new Swiper(".books-slider", {
-  loop:true,
+  loop: true,
   centeredSlides: true,
   autoplay: {
     delay: 9500,
@@ -68,7 +64,7 @@ var swiper = new Swiper(".books-slider", {
 
 var swiper = new Swiper(".featured-slider", {
   spaceBetween: 10,
-  loop:true,
+  loop: true,
   centeredSlides: true,
   autoplay: {
     delay: 9500,
@@ -96,7 +92,7 @@ var swiper = new Swiper(".featured-slider", {
 
 var swiper = new Swiper(".arrivals-slider", {
   spaceBetween: 10,
-  loop:true,
+  loop: true,
   centeredSlides: true,
   autoplay: {
     delay: 9500,
@@ -117,8 +113,8 @@ var swiper = new Swiper(".arrivals-slider", {
 
 var swiper = new Swiper(".reviews-slider", {
   spaceBetween: 10,
-  grabCursor:true,
-  loop:true,
+  grabCursor: true,
+  loop: true,
   centeredSlides: true,
   autoplay: {
     delay: 9500,
@@ -139,8 +135,8 @@ var swiper = new Swiper(".reviews-slider", {
 
 var swiper = new Swiper(".blogs-slider", {
   spaceBetween: 10,
-  grabCursor:true,
-  loop:true,
+  grabCursor: true,
+  loop: true,
   centeredSlides: true,
   autoplay: {
     delay: 9500,
@@ -157,4 +153,31 @@ var swiper = new Swiper(".blogs-slider", {
       slidesPerView: 3,
     },
   },
+});
+
+// Novos scripts
+
+const registerFormButton = document.getElementById("register-form-button");
+const loginFormButton = document.getElementById("login-form-button");
+const formLogin = document.getElementById("login-form");
+const formRegister = document.getElementById("register-form");
+
+registerFormButton.addEventListener("click", function () {
+  formLogin.style.opacity = "0";
+  formRegister.style.display = "block";
+
+  setTimeout(() => {
+    formLogin.style.display = "none";
+    formRegister.style.opacity = "1";
+  });
+});
+
+loginFormButton.addEventListener("click", function () {
+  formRegister.style.opacity = "0";
+  formLogin.style.display = "block";
+
+  setTimeout(() => {
+    formRegister.style.display = "none";
+    formLogin.style.opacity = "1";
+  });
 });
