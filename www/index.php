@@ -102,6 +102,19 @@ ini_set('display_errors', 1);
             <input id="rr-button-submit" type="button" value="Enviar" class="btn">
         </form>
 
+        <form id="recover-password-token" class="token-form">
+            <h3>Recuperar Senha</h3>
+            <span>Email</span>
+            <input type="t-email" name="t-email" class="box" placeholder="Insira seu email" id="t-email">
+            <span>Token</span>
+            <input type="token" name="token" class="box" placeholder="Insira token" id="token">
+            <span>Senha</span>
+            <input type="password" name="t-password" class="box" placeholder="Insira sua senha" id="t-password">
+            <span>Confirmar Senha</span>
+            <input type="password" name="tc-password" class="box" placeholder="Insira sua senha" id="tc-password">
+            <input id="tc-button-submit" type="button" value="Enviar" class="btn">
+        </form>
+
         <form id="register-form" class="register-form">
             <h3>Cadastrar</h3>
             <span>Nome</span>
@@ -829,6 +842,7 @@ ini_set('display_errors', 1);
     <script src="js/login_check.js"></script>
     <script src="js/register_user.js"></script>
     <script src="js/recover_password.js"></script>
+    <script src="js/token_password.js"></script>
 </body>
 
 </html>

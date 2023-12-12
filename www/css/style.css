@@ -440,6 +440,65 @@ section {
   text-decoration: underline;
 }
 
+.token-form {
+  background: #fff;
+  border: var(--border);
+  width: 40rem;
+  padding: 2rem;
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+  margin: 2rem;
+  display: none;
+  opacity: 0;
+  animation-name: fade, moveItem;
+  animation-duration: 1s;
+}
+
+.token-form h3 {
+  font-size: 2.5rem;
+  text-transform: uppercase;
+  color: var(--black);
+  text-align: center;
+}
+
+.token-form span {
+  display: block;
+  font-size: 1.5rem;
+  padding-top: 1rem;
+}
+
+.token-form .box {
+  width: 100%;
+  margin: 0.7rem 0;
+  font-size: 1.6rem;
+  border: var(--border);
+  border-radius: 0.5rem;
+  padding: 1rem 1.2rem;
+  color: var(--black);
+  text-transform: none;
+}
+
+.token-form .btn {
+  text-align: center;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.token-form p {
+  padding-top: 0.8rem;
+  color: var(--light-color);
+  font-size: 1.5rem;
+}
+
+.token-form p a {
+  color: var(--green);
+}
+
+.token-form p a:hover {
+  color: var(--black);
+  text-decoration: underline;
+}
+
 .home-container {
   background: url(../image/banner-bg.jpg) no-repeat;
   background-size: cover;

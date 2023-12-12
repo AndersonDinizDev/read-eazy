@@ -1,5 +1,7 @@
 const userEmail3 = document.getElementById("rc-email");
 const buttonRecover = document.getElementById("rr-button-submit");
+const tokenForm = document.getElementById("recover-password-token");
+const recoverForm2 = document.getElementById("recover-password");
 
 buttonRecover.addEventListener("click", function () {
   let email = userEmail3.value;
@@ -27,6 +29,14 @@ buttonRecover.addEventListener("click", function () {
     .then((data) => {
       if (data.recover) {
         alert("Token enviado com sucesso!");
+
+        recoverForm2.style.opacity = "0";
+        tokenForm.style.display = "block";
+
+        setTimeout(() => {
+          tokenForm.style.opacity = "1";
+          recoverForm2.style.display = "none";
+        });
       } else if (data.email_duplicate) {
         alert("Email não cadastrado.");
       }

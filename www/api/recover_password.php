@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       $mail->addAddress($email);
       $mail->isHTML(true);
 
-      $mail->Subject = 'Recuperação de Senha';
+      $mail->Subject = 'Recuperacao de Senha';
       $mail->Body = "Olá,<br><br>Você solicitou a recuperação de senha. Use o seguinte token para continuar: $token";
 
       if ($mail->send()) {
