@@ -83,7 +83,7 @@ ini_set('display_errors', 1);
         <form class="login-form" id="login-form">
             <h3>Entrar</h3>
             <span>Email</span>
-            <input type="email" name="email" class="box is-invalid" placeholder="Insira seu email" id="email">
+            <input type="email" name="email" class="box" placeholder="Insira seu email" id="email">
             <span>Senha</span>
             <input type="password" name="password" class="box" placeholder="Insira sua senha" id="password">
             <div class="checkbox">
@@ -91,8 +91,15 @@ ini_set('display_errors', 1);
                 <label for="remember-me"> Lembrar </label>
             </div>
             <input id="button-submit" type="button" value="Logar" class="btn">
-            <p>Esqueceu a senha ? <a href="#">Clique aqui</a></p>
+            <p>Esqueceu a senha ? <a id="recover-form-button" href="#">Clique aqui</a></p>
             <p>Não tem uma conta ? <a id="register-form-button" href="#">Clique aqui</a></p>
+        </form>
+
+        <form id="recover-password" class="recovery-form">
+            <h3>Recuperar Senha</h3>
+            <span>Email</span>
+            <input type="email" name="rc-email" class="box" placeholder="Insira seu email" id="rc-email">
+            <input id="rr-button-submit" type="button" value="Enviar" class="btn">
         </form>
 
         <form id="register-form" class="register-form">
@@ -821,6 +828,7 @@ ini_set('display_errors', 1);
     <script src="js/script.js"></script>
     <script src="js/login_check.js"></script>
     <script src="js/register_user.js"></script>
+    <script src="js/recover_password.js"></script>
 </body>
 
 </html>
