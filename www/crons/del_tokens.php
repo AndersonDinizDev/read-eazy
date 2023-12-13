@@ -2,7 +2,7 @@
 require_once("../config/database.php");
 
 try {
-  $tokenLifetime = 3600;
+  $tokenLifetime = 100;
 
   $expirationTime = date('Y-m-d H:i:s', time() - $tokenLifetime);
 
