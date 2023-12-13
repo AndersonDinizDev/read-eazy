@@ -1,4 +1,5 @@
 const livrosDestaque = document.getElementById("livros-destaque");
+const livrosChegados = document.getElementById("livros-chegados");
 
 function getProducts() {
   fetch("api/get_featured_products.php", {
@@ -7,14 +8,13 @@ function getProducts() {
   })
     .then((response) => response.json())
     .then((data) => {
-      // Filtra os itens com a categoria 'destaque'
       const itensDestaque = data.filter((item) => item.category === 'destaque');
+      const itensChegados = data.filter((item) => item.category === 'chegados');
 
-      // Verifica se há dados antes de prosseguir
       if (itensDestaque.length > 0) {
-        // Itera sobre os itens filtrados e cria o HTML dinamicamente
+
         itensDestaque.forEach((item) => {
-          const html = `
+          const htmlDestaque = `
             <div key="${item.id}" class="swiper-slide box">
                 <div class="icons">
                     <a href="#" class="fas fa-search"></a>
@@ -30,13 +30,39 @@ function getProducts() {
                     <a href="#" class="btn">Adicione ao Carrinho</a>
                 </div>
             </div>`;
-          // Adiciona o HTML gerado ao elemento livrosDestaque
-          livrosDestaque.innerHTML += html;
-
-          initializeSwiper();
+          livrosDestaque.innerHTML += htmlDestaque;
         });
+
+        initializeSwiper();
       } else {
-        console.log("Nenhum produto encontrado.");
+        console.log("Nenhum produto destacado encontrado.");
+      }
+
+      if (itensChegados.length > 0) {
+        itensChegados.forEach((item) => {
+          const htmlChegados = `
+            <a href="#" class="swiper-slide box">
+                <div class="image">
+                    <img src="${item.image}" alt="${item.name}">
+                </div>
+                <div class="content">
+                    <h3>${item.name}</h3>
+                    <div class="price">R$${item.value} <span>R$${item.discount}</span></div>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </a>`;
+          livrosChegados.innerHTML += htmlChegados;
+        });
+
+        initializeSwiper2()
+      } else {
+        console.log("Nenhum produto chegado encontrado.");
       }
     })
     .catch((error) => {
