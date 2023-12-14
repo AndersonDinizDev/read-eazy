@@ -74,17 +74,13 @@ function getProducts() {
 getProducts();
 
 $(document).on('click', '.add-item-cart', function() {
-  // Obtenha os dados do item do botão clicado
   const itemId = $(this).data('id');
   const itemName = $(this).data('name');
   const itemValue = $(this).data('value');
   const itemImage = $(this).data('image');
 
-  // Faça uma requisição POST para o servidor para adicionar o item ao carrinho
-  $.post('/api/adicionar_ao_carrinho.php', {id: itemId, name: itemName, value: itemValue, image: itemImage}, function(response) {
-    // Manipule a resposta do servidor conforme necessário (pode não ser necessário)
+  $.post('/api/add_cart.php', {id: itemId, name: itemName, value: itemValue, image: itemImage}, function(response) {
 
-    // Atualize a exibição do carrinho (pode não ser necessário)
     setTimeout(() => {
       location.reload();
     }, 300)
@@ -92,14 +88,10 @@ $(document).on('click', '.add-item-cart', function() {
 });
 
 $(document).on('click', '.del-cart', function() {
-    // Obtenha o ID do item a ser removido
     const itemIdToRemove = $(this).data('id');
 
-    // Envie o ID do item ao servidor para remoção
-    $.post('/api/remover_do_carrinho.php', {id: itemIdToRemove}, function(response) {
-        // Manipule a resposta do servidor conforme necessário (pode não ser necessário)
+    $.post('/api/del_cart.php', {id: itemIdToRemove}, function(response) {
 
-        // Atualize a exibição do carrinho (pode não ser necessário)
       setTimeout(() => {
       location.reload();
     }, 300)
