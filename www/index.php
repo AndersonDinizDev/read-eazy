@@ -14,7 +14,7 @@ ini_set('display_errors', 1);
 
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 
@@ -98,20 +98,33 @@ if (empty($cartItems)) {
         <?php
 } elseif (count($cartItems) >= 1) {
     ?>
-        <div style="display: flex; align-items: center; gap: 15px; margin-top: 10px;">
-            <img style="width: 50px;" src="image/book-1.png" alt="book-img"/>
+    <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+    <?php
+    foreach ($cartItems as $item) {
+        $itemId = $item['id'];
+        $itemName = $item['name'];
+        $itemValue = $item['value'];
+        $itemImage = $item['image'];
+
+    ?>
+        <div style="display: flex; align-items: center; gap: 15px;">
+            <img style="width: 50px;" src="<?= $itemImage ?>" alt="book-img"/>
             <div style="display: flex; flex-direction:column;">
-                <p style="font-size: 14px">Produto: Livro 1</p>
-                <p style="font-size: 14px">Valor: R$ 100,00</p>
+                <p style="font-size: 14px">Produto: <?= $itemName ?></p>
+                <p style="font-size: 14px">Valor: R$ <?= $itemValue ?></p>
             </div>
             <div>
-                <button style="cursor: pointer; border: none; outline:none; background-color: transparent;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
+                <button data-id="<?= $itemId ?>" class="del-cart" style="cursor: pointer; border: none; outline:none; background-color: transparent;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
   <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
   <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
 </svg></button>
             </div>
         </div>
-        <?php
+    <?php
+    }
+    ?>
+    </div>
+<?php
 }
 ?>
     </div>
@@ -253,7 +266,7 @@ if (empty($cartItems)) {
 
         <div class="swiper featured-slider">
 
-            <div id="livros-destaque" class="swiper-wrapper">
+            <div method="POST" id="livros-destaque" class="swiper-wrapper">
             </div>
 
             <div class="swiper-button-next"></div>
@@ -549,7 +562,7 @@ if (empty($cartItems)) {
     <script src="js/register_user.js"></script>
     <script src="js/recover_password.js"></script>
     <script src="js/token_password.js"></script>
-    <script src="js/products.js"></script>
+    <?= require_once("js/products.php") ?>
 </body>
 
 </html>
