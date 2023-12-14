@@ -84,8 +84,20 @@ ini_set('display_errors', 1);
     </div>
 
     <div class="modal-cart-content">
-        <!-- <span>SEU CARRINHO ESTÁ VAZIO!</span>
-        <p>Não há produtos selecionados até o momento!</p> -->
+
+    <?php 
+     $cartItems = isset($_SESSION['cart_items']) ? $_SESSION['cart_items'] : array();
+    ?>
+<?php
+if (empty($cartItems)) {
+    ?>
+    <div style="padding: 25px; display: flex; align-items: center; text-align: center; flex-direction: column;">
+        <span>SEU CARRINHO ESTÁ VAZIO!</span>
+        <p>Não há produtos selecionados até o momento!</p>
+        </div>
+        <?php
+} elseif (count($cartItems) >= 1) {
+    ?>
         <div style="display: flex; align-items: center; gap: 15px; margin-top: 10px;">
             <img style="width: 50px;" src="image/book-1.png" alt="book-img"/>
             <div style="display: flex; flex-direction:column;">
@@ -99,6 +111,9 @@ ini_set('display_errors', 1);
 </svg></button>
             </div>
         </div>
+        <?php
+}
+?>
     </div>
 
     <div class="modal-cart-bottom-navbar">
