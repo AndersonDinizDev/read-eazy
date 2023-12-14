@@ -1077,7 +1077,7 @@ section {
     box-shadow: 5px 0px 30px -5px rgba(0,0,0,0.75);
 }
 .modal-cart-navbar span{
-    color: #444;
+    color: #fff;
     font-size: 11pt;
     text-transform: none;
 }
@@ -1089,14 +1089,9 @@ section {
 .modal-cart-content{
     display: flex;
     flex-direction: column;
-    justify-content: start;
-    align-items: center;
-
-    text-align: center;
-
     height: 100%;
     width: 100%;
-    padding: 50px;
+    align-items: center;
 }
 .modal-cart-content span{
     color:#219150;
