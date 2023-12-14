@@ -38,7 +38,7 @@ ini_set('display_errors', 1);
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
                 <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-shopping-cart"></a>
+                <a href="#" class="fas fa-shopping-cart" id="cartIcon"></a>
                 <div <?php if ($_SESSION['user-id']) {
                             echo "style='display: none;'";
                         }; ?> id="login-btn" class="fas fa-user"></div>
@@ -74,6 +74,25 @@ ini_set('display_errors', 1);
         <a href="#reviews" class="fas fa-comments"></a>
         <a href="#blogs" class="fas fa-blog"></a>
     </nav>
+
+    <!-- aside cart -->
+
+<div class="modal-cart">
+    <div class="modal-cart-navbar">
+        <span>Resumo da compra</span>
+        <img id="exit-cartModal" width="26" height="26" src="https://img.icons8.com/metro/26/multiply.png" alt="fechar"/>
+    </div>
+
+    <div class="modal-cart-content">
+        <span>SEU CARRINHO ESTÁ VAZIO!</span>
+        <p>Não há produtos selecionados até o momento!</p>
+    </div>
+
+    <div class="modal-cart-bottom-navbar">
+        <span id="start-checkout">FECHAR PEDIDO</span>
+        <p>Continuar comprando</p>
+    </div>
+</div>
 
 
     <div class="login-form-container">
