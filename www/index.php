@@ -77,8 +77,8 @@ ini_set('display_errors', 1);
 
     <!-- modal -->
     <div id="modal-checkout" class="modal-overlay">
-        <div class="modal-checkout">
-            aaa
+        <div class="modal-checkout" style="position: relative;">
+            <button id="modal-checkout-close" style="position: absolute; right: 1.5rem; top: 1rem; font-size: 18px; font-weight: bold; background-color: transparent; border: none; cursor: pointer;">X</button>
         </div>
     </div>
 
