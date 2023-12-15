@@ -111,12 +111,15 @@ ini_set('display_errors', 1);
                         ?>
                             <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
                                 <?php
+                                $totalValue = 0;
+
                                 foreach ($cartItems as $item) {
                                     $itemId = $item['id'];
                                     $itemName = $item['name'];
                                     $itemValue = $item['value'];
                                     $itemImage = $item['image'];
 
+                                    $totalValue += $item['value'];
                                 ?>
                                     <div style="display: flex; align-items: center; gap: 15px;">
                                         <img style="width: 50px;" src="<?= $itemImage ?>" alt="book-img" />
@@ -141,9 +144,13 @@ ini_set('display_errors', 1);
                     </div>
                 </div>
             </div>
+            <?php if ($totalValue > 0) : ?>
+                <h2 id="produtcs-value">Valor Total: R$ <?= number_format($totalValue, 2, ',', '.'); ?></h2>
+            <?php endif; ?>
             <button id="finish-checkout">Finalizar</button>
         </div>
     </div>
+
 
     <!-- aside cart -->
 

@@ -1145,13 +1145,13 @@ section {
   height: 100vh;
   top: 0;
   left: 0;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   z-index: 100;
   backdrop-filter: blur(5px);
   transition: all 0.5s ease;
-  opacity: 1;
+  opacity: 0;
 }
 
 .modal-checkout {
@@ -1224,6 +1224,15 @@ section {
   position: absolute;
   right: 1rem;
   bottom: 1rem;
+}
+
+#produtcs-value {
+  position: absolute;
+  left: 3rem;
+  bottom: 3rem;
+  color: #219150;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 @media (max-width: 450px) {
