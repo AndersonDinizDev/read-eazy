@@ -39,16 +39,17 @@ ini_set('display_errors', 1);
                 <div id="search-btn" class="fas fa-search"></div>
                 <a href="#" class="fas fa-heart"></a>
                 <a href="#" class="fas fa-shopping-cart" id="cartIcon"></a>
-                <div <?php if ($_SESSION['user-id']) {
+                <div <?php if (isset($_SESSION['user-id']) && $_SESSION['user-id']) {
                             echo "style='display: none;'";
                         }; ?> id="login-btn" class="fas fa-user"></div>
             </div>
-            <?php if ($_SESSION['user-id']) : ?>
+            <?php if (isset($_SESSION['user-id']) && $_SESSION['user-id']) : ?>
                 <div class="user-login">
                     <p style="font-size: 16px;"><?= $_SESSION['user-name'] ?></p>
                     <a style="font-size: 12px;" type="button" href="api/logout.php">Sair</a>
                 </div>
             <?php endif; ?>
+
         </section>
 
         <div class="header-2">
@@ -77,19 +78,22 @@ ini_set('display_errors', 1);
 
     <!-- modal -->
     <div id="modal-checkout" class="modal-overlay">
-        <div class="modal-checkout" style="position: relative;">
-            <button id="modal-checkout-close" style="position: absolute; right: 1.5rem; top: 1rem; font-size: 18px; font-weight: bold; background-color: transparent; border: none; cursor: pointer;">X</button>
+        <form action="api/process_payment.php" method="post" class="modal-checkout" style="position: relative;">
+            <button type="button" id="modal-checkout-close" style="position: absolute; right: 1.5rem; top: 1rem; font-size: 18px; font-weight: bold; background-color: transparent; border: none; cursor: pointer;">X</button>
             <h2>Finalizar Pedido</h2>
             <div class="modal-checkout-content">
                 <div class="modal-left">
                     <label>Nome</label>
-                    <input value="<?= isset($_SESSION['user-name']) ? $_SESSION['user-name'] : '' ?>" type="text" id="user-name" required placeholder="Insira seu Nome" />
+                    <input value="<?= isset($_SESSION['user-name']) ? $_SESSION['user-name'] : '' ?>" type="text" id="form-checkout__payerFirstName" name="payerFirstName" required placeholder="Insira seu Nome" />
                     <br />
                     <label>Email</label>
-                    <input value="<?= isset($_SESSION['user-email']) ? $_SESSION['user-email'] : '' ?>" type="text" id="user-email" required placeholder="Insira seu Email" />
+                    <input value="<?= isset($_SESSION['user-email']) ? $_SESSION['user-email'] : '' ?>" type="email" id="form-checkout__email" name="email" required placeholder="Insira seu Email" />
                     <br />
-                    <label>CPF</label>
-                    <input type="text" id="user-document" required placeholder="Insira seu CPF" />
+                    <label for="identificationType">Tipo de documento</label>
+                    <select id="form-checkout__identificationType" name="identificationType" type="text"></select>
+                    <br />
+                    <label>Nº do documento</label>
+                    <input type="text" id="form-checkout__identificationNumber" name="identificationNumber" required placeholder="Insira seu CPF" />
                     <br />
                     <label>Endereço</label>
                     <input type="text" id="user-adress" required placeholder="Insira seu Endereço" />
@@ -128,7 +132,7 @@ ini_set('display_errors', 1);
                                             <p style="font-size: 14px">Valor: R$ <?= $itemValue ?></p>
                                         </div>
                                         <div>
-                                            <button data-id="<?= $itemId ?>" class="del-checkout-cart" style="cursor: pointer; border: none; outline:none; background-color: transparent;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <button type="button" data-id="<?= $itemId ?>" class="del-checkout-cart" style="cursor: pointer; border: none; outline:none; background-color: transparent;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
                                                     <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
                                                     <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
                                                 </svg></button>
@@ -147,8 +151,10 @@ ini_set('display_errors', 1);
             <?php if ($totalValue > 0) : ?>
                 <h2 id="produtcs-value">Valor Total: R$ <?= number_format($totalValue, 2, ',', '.'); ?></h2>
             <?php endif; ?>
-            <button id="finish-checkout">Finalizar</button>
-        </div>
+            <button type="submit" id="finish-checkout">Finalizar</button>
+            <input type="hidden" name="transactionAmount" id="transactionAmount" value="<?= $totalValue ?>">
+            <input type="hidden" name="description" id="description" value="Livro">
+        </form>
     </div>
 
 
@@ -628,6 +634,7 @@ ini_set('display_errors', 1);
         <img src="image/loader-img.gif" alt="">
     </div>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
 
     <!-- custom js file link  -->
     <script src="js/script.js"></script>

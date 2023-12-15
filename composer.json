@@ -1,0 +1,12 @@
+{
+  "name": "projeto/read-eazy",
+  "type": "library",
+  "require": {
+    "mercadopago/dx-php": "^3.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Projeto\\ReadEazy\\": "www/src"
+    }
+  }
+}
