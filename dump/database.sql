@@ -1,4 +1,4 @@
--- Criação da tabela `products`
+
 CREATE TABLE IF NOT EXISTS `products` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(255) NOT NULL,
@@ -8,7 +8,6 @@ CREATE TABLE IF NOT EXISTS `products` (
   `image` VARCHAR(255) NOT NULL
 );
 
--- Inserção de dados na tabela `products`
 INSERT INTO `products` (name, value, category, discount, image)
 VALUES 
   (1, 'Livro 1', 103.43, 'destaque', 78.80, 'image/book-1.png'),
@@ -32,7 +31,6 @@ VALUES
   (19, 'Livro 9', 81.30, 'chegados', 0, 'image/book-9.png'),
   (20, 'Livro 10', 69.99, 'chegados', 0, 'image/book-10.png');
 
--- Criação da tabela `recovery_tokens`
 CREATE TABLE IF NOT EXISTS `recovery_tokens` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `email` VARCHAR(255) NOT NULL,
@@ -40,7 +38,6 @@ CREATE TABLE IF NOT EXISTS `recovery_tokens` (
   `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Criação da tabela `users`
 CREATE TABLE IF NOT EXISTS `users` (
   `id` INT AUTO_INCREMENT PRIMARY KEY,
   `name` VARCHAR(255) NOT NULL,
@@ -48,7 +45,6 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` VARCHAR(255) NOT NULL
 );
 
--- Inserção de dados na tabela `users`
 INSERT INTO `users` (name, email, password)
 VALUES 
   (1, 'Anderson', 'teste@teste.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef'),
@@ -59,3 +55,13 @@ VALUES
   (6, 'Lucas', 'teste5@teste.com', '40bd001563085fc35165329ea1ff5c5ecbdbbeef'),
   (7, 'Anderson', 'teste@teste.net', '40bd001563085fc35165329ea1ff5c5ecbdbbeef'),
   (8, 'Anderson', 'andersondiniz159@gmail.com', '7c4a8d09ca3762af61e59520943dc26494f8941b');
+
+  CREATE TABLE IF NOT EXISTS orders (
+    `id` INT AUTO_INCREMENT PRIMARY KEY,
+    `order_code` VARCHAR(255) NOT NULL,
+    `customer_email` VARCHAR(255) NOT NULL,
+    `amount` DECIMAL(10, 2) NOT NULL,
+    `product` VARCHAR(255) NOT NULL,
+    `order_date` DATETIME NOT NULL,
+    `status` VARCHAR(50) DEFAULT 'pending'
+)
