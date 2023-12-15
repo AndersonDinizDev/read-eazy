@@ -18,11 +18,14 @@
     const itemName = $(this).data('name');
     const itemValue = $(this).data('value');
     const itemImage = $(this).data('image');
+    const itemDiscount = $(this).data('discount');
+
+    let itemTypeValue = itemDiscount === 0 ? itemValue : itemDiscount;
 
     $.post('/api/add_cart.php', {
       id: itemId,
       name: itemName,
-      value: itemValue,
+      value: itemDiscount,
       image: itemImage
     }, function(response) {
 
