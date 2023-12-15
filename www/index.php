@@ -96,7 +96,7 @@ ini_set('display_errors', 1);
                     <input type="text" id="form-checkout__identificationNumber" name="identificationNumber" required placeholder="Insira seu CPF" />
                     <br />
                     <label>Endereço</label>
-                    <input type="text" id="user-adress" required placeholder="Insira seu Endereço" />
+                    <input type="text" id="user-adress" name="streetName" required placeholder="Insira seu Endereço" />
                 </div>
                 <div class="modal-right">
                     <div id="modal-products" class="modal-products">

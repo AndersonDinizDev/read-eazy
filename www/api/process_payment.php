@@ -59,8 +59,11 @@ session_start();
                 "last_name" => $_POST['payerLastName'] ?? '',
                 "identification" => [
                     "type" => $_POST['identificationType'] ?? '',
-                    "number" => $_POST['identificationNumber'] ?? ''
-                ]
+                    "number" => $_POST['identificationNumber'] ?? '',
+                ],
+                "address" =>  array(
+                    "street_name" => $_POST['streetName'] ?? '',
+                )
             ],
             "payment_method_id" => "pix",
         ];
@@ -70,22 +73,27 @@ session_start();
         $qrCodeBase64 = $payment->point_of_interaction->transaction_data->qr_code_base64;
         $hash = $payment->point_of_interaction->transaction_data->qr_code;
 
-        // Enviar e-mail para o cliente
         $mail = new PHPMailer;
         $mail->isSMTP();
         $mail->SMTPAuth = true;
-        $mail->Username   = 'readeazy35@gmail.com'; // Altere para o seu endereço de e-mail
-        $mail->Password   = 'hfwy baag lquw zphj'; // Altere para a sua senha
+        $mail->Username   = 'readeazy35@gmail.com';
+        $mail->Password   = 'hfwy baag lquw zphj';
         $mail->SMTPSecure = 'tls';
         $mail->Host = 'smtp.gmail.com';
         $mail->Port = 587;
 
-        $mail->setFrom('readeazy35@gmail.com', 'ReadEazy'); // Altere para o seu nome e e-mail
+        $mail->setFrom('readeazy35@gmail.com', 'ReadEazy');
         $mail->addAddress($request['payer']['email']);
         $mail->isHTML(true);
 
         $mail->Subject = 'Pedido realizado com sucesso !';
-        $mail->Body = 'Seu pedido com o código: ' . $payment->id . ' foi concluído com sucesso. Clique no link a seguir para realizar o pagamento: ' . $payment->point_of_interaction->transaction_data->ticket_url;
+        $mail->Body = 'Olá ' . $request['payer']['first_name'] . ',<br><br>' .
+            'Seu pedido com o código: ' . $payment->id . ' foi concluído com sucesso.<br>' .
+            'Quem irá receber o pedido: ' . $request['payer']['first_name'] . ' ' . $request['payer']['last_name'] . '<br>' .
+            'CPF: ' . $request['payer']['identification']['number'] . '<br>' .
+            'Endereço: ' . $request['payer']['address']['street_name'] . '<br><br>' .
+            'Clique no link a seguir para realizar o pagamento: ' . $payment->point_of_interaction->transaction_data->ticket_url;
+
 
         if (!$mail->send()) {
             echo 'Erro ao enviar o e-mail: ' . $mail->ErrorInfo;
