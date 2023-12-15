@@ -1,5 +1,6 @@
 <?php
 
+require_once("../config/database.php");
 require_once('../vendor/autoload.php');
 
 use MercadoPago\Client\Payment\PaymentClient;
@@ -69,6 +70,17 @@ session_start();
         ];
 
         $payment = $client->create($request);
+
+        try {
+            $stmt = $database->prepare("INSERT INTO orders (order_code, customer_email, amount, product, order_date, status) VALUES (?, ?, ?, ?, NOW(), 'pending')");
+            $stmt->bindParam(1, $payment->id);
+            $stmt->bindParam(2, $request['payer']['email']);
+            $stmt->bindParam(3, $request['transaction_amount']);
+            $stmt->bindParam(4, $request['description']);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo "Error inserting order into the database: " . $e->getMessage();
+        }
 
         $qrCodeBase64 = $payment->point_of_interaction->transaction_data->qr_code_base64;
         $hash = $payment->point_of_interaction->transaction_data->qr_code;

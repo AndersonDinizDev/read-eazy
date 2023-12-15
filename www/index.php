@@ -87,7 +87,7 @@ ini_set('display_errors', 1);
                     <input value="<?= isset($_SESSION['user-name']) ? $_SESSION['user-name'] : '' ?>" type="text" id="form-checkout__payerFirstName" name="payerFirstName" required placeholder="Insira seu Nome" />
                     <br />
                     <label>Email</label>
-                    <input value="<?= isset($_SESSION['user-email']) ? $_SESSION['user-email'] : '' ?>" type="email" id="form-checkout__email" name="email" required placeholder="Insira seu Email"/>
+                    <input value="<?= isset($_SESSION['user-email']) ? $_SESSION['user-email'] : '' ?>" type="email" id="form-checkout__email" name="email" required placeholder="Insira seu Email" />
                     <br />
                     <label for="identificationType">Tipo de documento</label>
                     <select id="form-checkout__identificationType" name="identificationType" type="text"></select>
@@ -124,6 +124,7 @@ ini_set('display_errors', 1);
                                     $itemImage = $item['image'];
 
                                     $totalValue += $item['value'];
+
                                 ?>
                                     <div style="display: flex; align-items: center; gap: 15px;">
                                         <img style="width: 50px;" src="<?= $itemImage ?>" alt="book-img" />
@@ -153,7 +154,13 @@ ini_set('display_errors', 1);
             <?php endif; ?>
             <button type="submit" id="finish-checkout">Finalizar</button>
             <input type="hidden" name="transactionAmount" id="transactionAmount" value="<?= $totalValue ?>">
-            <input type="hidden" name="description" id="description" value="Livro">
+            <input type="hidden" name="description" id="description" value="<?php
+                                                                            $itemNames = array();
+                                                                            foreach ($cartItems as $item) {
+                                                                                $itemNames[] = $item['name'];
+                                                                            }
+                                                                            echo implode(', ', $itemNames);
+                                                                            ?>">
         </form>
     </div>
 
