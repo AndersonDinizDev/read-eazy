@@ -14,7 +14,7 @@ ini_set('display_errors', 1);
 
     <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
 
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
 
@@ -38,17 +38,18 @@ ini_set('display_errors', 1);
             <div class="icons">
                 <div id="search-btn" class="fas fa-search"></div>
                 <a href="#" class="fas fa-heart"></a>
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <div <?php if ($_SESSION['user-id']) {
+                <a href="#" class="fas fa-shopping-cart" id="cartIcon"></a>
+                <div <?php if (isset($_SESSION['user-id']) && $_SESSION['user-id']) {
                             echo "style='display: none;'";
                         }; ?> id="login-btn" class="fas fa-user"></div>
             </div>
-            <?php if ($_SESSION['user-id']) : ?>
+            <?php if (isset($_SESSION['user-id']) && $_SESSION['user-id']) : ?>
                 <div class="user-login">
                     <p style="font-size: 16px;"><?= $_SESSION['user-name'] ?></p>
                     <a style="font-size: 12px;" type="button" href="api/logout.php">Sair</a>
                 </div>
             <?php endif; ?>
+
         </section>
 
         <div class="header-2">
@@ -74,6 +75,151 @@ ini_set('display_errors', 1);
         <a href="#reviews" class="fas fa-comments"></a>
         <a href="#blogs" class="fas fa-blog"></a>
     </nav>
+
+    <!-- modal -->
+    <div id="modal-checkout" class="modal-overlay">
+        <form action="api/process_payment.php" method="post" class="modal-checkout" style="position: relative;">
+            <button type="button" id="modal-checkout-close" style="position: absolute; right: 1.5rem; top: 1rem; font-size: 18px; font-weight: bold; background-color: transparent; border: none; cursor: pointer;">X</button>
+            <h2>Finalizar Pedido</h2>
+            <div class="modal-checkout-content">
+                <div class="modal-left">
+                    <label>Nome</label>
+                    <input value="<?= isset($_SESSION['user-name']) ? $_SESSION['user-name'] : '' ?>" type="text" id="form-checkout__payerFirstName" name="payerFirstName" required placeholder="Insira seu Nome" />
+                    <br />
+                    <label>Email</label>
+                    <input value="<?= isset($_SESSION['user-email']) ? $_SESSION['user-email'] : '' ?>" type="email" id="form-checkout__email" name="email" required placeholder="Insira seu Email" />
+                    <br />
+                    <label for="identificationType">Tipo de documento</label>
+                    <select id="form-checkout__identificationType" name="identificationType" type="text"></select>
+                    <br />
+                    <label>Nº do documento</label>
+                    <input type="text" id="form-checkout__identificationNumber" name="identificationNumber" required placeholder="Insira seu CPF" />
+                    <br />
+                    <label>Endereço</label>
+                    <input type="text" id="user-adress" name="streetName" required placeholder="Insira seu Endereço" />
+                </div>
+                <div class="modal-right">
+                    <div id="modal-products" class="modal-products">
+                        <?php
+                        $cartItems = isset($_SESSION['cart_items']) ? $_SESSION['cart_items'] : array();
+                        $totalValue = 0;
+                        ?>
+                        <?php
+                        if (empty($cartItems)) {
+                        ?>
+                            <div style="padding: 25px; display: flex; align-items: center; text-align: center; flex-direction: column;">
+                                <span>SEU CARRINHO ESTÁ VAZIO!</span>
+                                <p>Não há produtos selecionados até o momento!</p>
+                            </div>
+                        <?php
+                        } elseif (count($cartItems) >= 1) {
+                        ?>
+                            <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+                                <?php
+
+                                foreach ($cartItems as $item) {
+                                    $itemId = $item['id'];
+                                    $itemName = $item['name'];
+                                    $itemValue = $item['value'];
+                                    $itemImage = $item['image'];
+
+                                    $totalValue += $item['value'];
+
+                                ?>
+                                    <div style="display: flex; align-items: center; gap: 15px;">
+                                        <img style="width: 50px;" src="<?= $itemImage ?>" alt="book-img" />
+                                        <div style="display: flex; flex-direction:column;">
+                                            <p style="font-size: 14px">Produto: <?= $itemName ?></p>
+                                            <p style="font-size: 14px">Valor: R$ <?= $itemValue ?></p>
+                                        </div>
+                                        <div>
+                                            <button type="button" data-id="<?= $itemId ?>" class="del-checkout-cart" style="cursor: pointer; border: none; outline:none; background-color: transparent;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                                </svg></button>
+                                        </div>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        <?php
+                        }
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <?php if ($totalValue > 0) : ?>
+                <h2 id="produtcs-value">Valor Total: R$ <?= number_format($totalValue, 2, ',', '.'); ?></h2>
+            <?php endif; ?>
+            <button type="submit" id="finish-checkout">Finalizar</button>
+            <input type="hidden" name="transactionAmount" id="transactionAmount" value="<?= $totalValue ?>">
+            <input type="hidden" name="description" id="description" value="<?php
+                                                                            $itemNames = array();
+                                                                            foreach ($cartItems as $item) {
+                                                                                $itemNames[] = $item['name'];
+                                                                            }
+                                                                            echo implode(', ', $itemNames);
+                                                                            ?>">
+        </form>
+    </div>
+
+
+    <!-- aside cart -->
+
+    <div class="modal-cart">
+        <div class="modal-cart-navbar">
+            <span>Resumo da compra</span>
+            <img id="exit-cartModal" width="26" height="26" src="https://img.icons8.com/metro/26/multiply.png" alt="fechar" />
+        </div>
+
+        <div class="modal-cart-content">
+            <?php
+            if (empty($cartItems)) {
+            ?>
+                <div style="padding: 25px; display: flex; align-items: center; text-align: center; flex-direction: column;">
+                    <span>SEU CARRINHO ESTÁ VAZIO!</span>
+                    <p>Não há produtos selecionados até o momento!</p>
+                </div>
+            <?php
+            } elseif (count($cartItems) >= 1) {
+            ?>
+                <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+                    <?php
+                    foreach ($cartItems as $item) {
+                        $itemId = $item['id'];
+                        $itemName = $item['name'];
+                        $itemValue = $item['value'];
+                        $itemImage = $item['image'];
+
+                    ?>
+                        <div style="display: flex; align-items: center; gap: 15px;">
+                            <img style="width: 50px;" src="<?= $itemImage ?>" alt="book-img" />
+                            <div style="display: flex; flex-direction:column;">
+                                <p style="font-size: 14px">Produto: <?= $itemName ?></p>
+                                <p style="font-size: 14px">Valor: R$ <?= $itemValue ?></p>
+                            </div>
+                            <div>
+                                <button data-id="<?= $itemId ?>" class="del-cart" style="cursor: pointer; border: none; outline:none; background-color: transparent;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
+                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                    </svg></button>
+                            </div>
+                        </div>
+                    <?php
+                    }
+                    ?>
+                </div>
+            <?php
+            }
+            ?>
+        </div>
+
+        <div class="modal-cart-bottom-navbar">
+            <button id="start-checkout">FECHAR PEDIDO</button>
+            <p>Continuar comprando</p>
+        </div>
+    </div>
 
 
     <div class="login-form-container">
@@ -206,7 +352,7 @@ ini_set('display_errors', 1);
 
         <div class="swiper featured-slider">
 
-            <div id="livros-destaque" class="swiper-wrapper">
+            <div method="POST" id="livros-destaque" class="swiper-wrapper">
             </div>
 
             <div class="swiper-button-next"></div>
@@ -495,6 +641,7 @@ ini_set('display_errors', 1);
         <img src="image/loader-img.gif" alt="">
     </div>
     <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
 
     <!-- custom js file link  -->
     <script src="js/script.js"></script>
@@ -502,7 +649,8 @@ ini_set('display_errors', 1);
     <script src="js/register_user.js"></script>
     <script src="js/recover_password.js"></script>
     <script src="js/token_password.js"></script>
-    <script src="js/products.js"></script>
+    <?= require_once("js/products.php") ?>
+    <?= require_once("js/checkout.php") ?>
 </body>
 
 </html>

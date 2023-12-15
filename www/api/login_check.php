@@ -19,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $_SESSION['user-id'] = $row['id'];
     $_SESSION['user-name'] = $row['name'];
+    $_SESSION['user-email'] = $row['email'];
     $check++;
   }
 

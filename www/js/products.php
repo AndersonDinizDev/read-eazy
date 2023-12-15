@@ -1,3 +1,4 @@
+<script>
 const livrosDestaque = document.getElementById("livros-destaque");
 const livrosChegados = document.getElementById("livros-chegados");
 
@@ -27,7 +28,7 @@ function getProducts() {
                 <div class="content">
                     <h3>${item.name}</h3>
                     <div class="price">R$${item.value} <span>R$${item.discount}</span></div>
-                    <a href="#" class="btn">Adicione ao Carrinho</a>
+                    <button data-id="${item.id}" data-name="${item.name}" data-value="${item.value}" data-image="${item.image}" class="btn add-item-cart">Adicione ao Carrinho</button>
                 </div>
             </div>`;
           livrosDestaque.innerHTML += htmlDestaque;
@@ -71,3 +72,17 @@ function getProducts() {
 }
 
 getProducts();
+
+
+$(document).on('click', '.del-checkout-cart', function() {
+    const itemIdToRemove = $(this).data('id');
+
+    $.post('/api/del_cart.php', {id: itemIdToRemove}, function(response) {
+
+      setTimeout(() => {
+      location.reload();
+    }, 300)
+    });
+});
+
+</script>

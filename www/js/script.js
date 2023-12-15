@@ -200,3 +200,18 @@ recoverFormButton.addEventListener("click", function() {
     formLogin.style.display = "none";
   });
 })
+
+// Carrinho
+const cartElement = document.querySelector("#cartIcon")
+const cartModal = document.querySelector(".modal-cart")
+//const cartModalVisible = document.querySelector(".modal-cart.visible")
+const exitCartModal = document.querySelector("#exit-cartModal")
+
+
+cartElement.addEventListener('click', function(event){
+  cartModal.classList.add("visible")
+})
+
+exitCartModal.addEventListener('click', function(event) {
+  cartModal.classList.remove("visible")
+})
