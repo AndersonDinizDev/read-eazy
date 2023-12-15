@@ -1184,6 +1184,7 @@ section {
   height: 35px;
   border-radius: 8px;
   padding-left: 1rem;
+  text-transform: none;
 }
 
 .modal-checkout-content select {
@@ -1238,7 +1239,7 @@ section {
 #produtcs-value {
   position: absolute;
   left: 3rem;
-  bottom: 3rem;
+  bottom: 2rem;
   color: #219150;
   font-weight: bold;
   font-size: 24px;

@@ -87,7 +87,7 @@ ini_set('display_errors', 1);
                     <input value="<?= isset($_SESSION['user-name']) ? $_SESSION['user-name'] : '' ?>" type="text" id="form-checkout__payerFirstName" name="payerFirstName" required placeholder="Insira seu Nome" />
                     <br />
                     <label>Email</label>
-                    <input value="<?= isset($_SESSION['user-email']) ? $_SESSION['user-email'] : '' ?>" type="email" id="form-checkout__email" name="email" required placeholder="Insira seu Email" />
+                    <input value="<?= isset($_SESSION['user-email']) ? $_SESSION['user-email'] : '' ?>" type="email" id="form-checkout__email" name="email" required placeholder="Insira seu Email"/>
                     <br />
                     <label for="identificationType">Tipo de documento</label>
                     <select id="form-checkout__identificationType" name="identificationType" type="text"></select>
@@ -102,6 +102,7 @@ ini_set('display_errors', 1);
                     <div id="modal-products" class="modal-products">
                         <?php
                         $cartItems = isset($_SESSION['cart_items']) ? $_SESSION['cart_items'] : array();
+                        $totalValue = 0;
                         ?>
                         <?php
                         if (empty($cartItems)) {
@@ -115,7 +116,6 @@ ini_set('display_errors', 1);
                         ?>
                             <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
                                 <?php
-                                $totalValue = 0;
 
                                 foreach ($cartItems as $item) {
                                     $itemId = $item['id'];

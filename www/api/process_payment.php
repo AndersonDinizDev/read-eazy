@@ -5,10 +5,18 @@ require_once('../vendor/autoload.php');
 use MercadoPago\Client\Payment\PaymentClient;
 use MercadoPago\Exceptions\MPApiException;
 use MercadoPago\MercadoPagoConfig;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 
 MercadoPagoConfig::setAccessToken("TEST-4559123468904236-070219-d9dfc08291ce794c8d81025c8b989d91-153865232");
 
 $client = new PaymentClient();
+
+session_start();
 
 ?>
 
@@ -61,6 +69,28 @@ $client = new PaymentClient();
 
         $qrCodeBase64 = $payment->point_of_interaction->transaction_data->qr_code_base64;
         $hash = $payment->point_of_interaction->transaction_data->qr_code;
+
+        // Enviar e-mail para o cliente
+        $mail = new PHPMailer;
+        $mail->isSMTP();
+        $mail->SMTPAuth = true;
+        $mail->Username   = 'readeazy35@gmail.com'; // Altere para o seu endereço de e-mail
+        $mail->Password   = 'hfwy baag lquw zphj'; // Altere para a sua senha
+        $mail->SMTPSecure = 'tls';
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Port = 587;
+
+        $mail->setFrom('readeazy35@gmail.com', 'ReadEazy'); // Altere para o seu nome e e-mail
+        $mail->addAddress($request['payer']['email']);
+        $mail->isHTML(true);
+
+        $mail->Subject = 'Pedido realizado com sucesso !';
+        $mail->Body = 'Seu pedido com o código: ' . $payment->id . ' foi concluído com sucesso. Clique no link a seguir para realizar o pagamento: ' . $payment->point_of_interaction->transaction_data->ticket_url;
+
+        if (!$mail->send()) {
+            echo 'Erro ao enviar o e-mail: ' . $mail->ErrorInfo;
+        }
+        $_SESSION['cart_items'] = array();
     } catch (MPApiException $e) {
         echo "Código de status: " . $e->getApiResponse()->getStatusCode() . "\n";
 
@@ -83,3 +113,6 @@ $client = new PaymentClient();
             window.location.href = "<?= $payment->point_of_interaction->transaction_data->ticket_url ?>";
         }, 5000);
     </script>
+</body>
+
+</html>
