@@ -79,6 +79,28 @@ ini_set('display_errors', 1);
     <div id="modal-checkout" class="modal-overlay">
         <div class="modal-checkout" style="position: relative;">
             <button id="modal-checkout-close" style="position: absolute; right: 1.5rem; top: 1rem; font-size: 18px; font-weight: bold; background-color: transparent; border: none; cursor: pointer;">X</button>
+            <h2>Finalizar Pedido</h2>
+            <div class="modal-checkout-content">
+                <div class="modal-left">
+                    <label>Nome</label>
+                    <input type="text" id="user-name" required />
+                    <br />
+                    <label>Email</label>
+                    <input type="text" id="user-email" required />
+                    <br />
+                    <label>CPF</label>
+                    <input type="text" id="user-document" required />
+                    <br />
+                    <label>Endereço</label>
+                    <input type="text" id="user-adress" required />
+                </div>
+                <div class="modal-right">
+                    <div class="modal-products">
+
+                    </div>
+                </div>
+            </div>
+            <button id="finish-checkout">Finalizar</button>
         </div>
     </div>
 
