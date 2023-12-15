@@ -83,16 +83,16 @@ ini_set('display_errors', 1);
             <div class="modal-checkout-content">
                 <div class="modal-left">
                     <label>Nome</label>
-                    <input type="text" id="user-name" required />
+                    <input value="<?= isset($_SESSION['user-name']) ? $_SESSION['user-name'] : '' ?>" type="text" id="user-name" required placeholder="Insira seu Nome" />
                     <br />
                     <label>Email</label>
-                    <input type="text" id="user-email" required />
+                    <input value="<?= isset($_SESSION['user-email']) ? $_SESSION['user-email'] : '' ?>" type="text" id="user-email" required placeholder="Insira seu Email" />
                     <br />
                     <label>CPF</label>
-                    <input type="text" id="user-document" required />
+                    <input type="text" id="user-document" required placeholder="Insira seu CPF" />
                     <br />
                     <label>Endereço</label>
-                    <input type="text" id="user-adress" required />
+                    <input type="text" id="user-adress" required placeholder="Insira seu Endereço" />
                 </div>
                 <div class="modal-right">
                     <div id="modal-products" class="modal-products">
