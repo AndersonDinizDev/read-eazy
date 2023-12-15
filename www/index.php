@@ -95,8 +95,49 @@ ini_set('display_errors', 1);
                     <input type="text" id="user-adress" required />
                 </div>
                 <div class="modal-right">
-                    <div class="modal-products">
+                    <div id="modal-products" class="modal-products">
+                        <?php
+                        $cartItems = isset($_SESSION['cart_items']) ? $_SESSION['cart_items'] : array();
+                        ?>
+                        <?php
+                        if (empty($cartItems)) {
+                        ?>
+                            <div style="padding: 25px; display: flex; align-items: center; text-align: center; flex-direction: column;">
+                                <span>SEU CARRINHO ESTÁ VAZIO!</span>
+                                <p>Não há produtos selecionados até o momento!</p>
+                            </div>
+                        <?php
+                        } elseif (count($cartItems) >= 1) {
+                        ?>
+                            <div style="display: flex; flex-direction: column; gap: 15px; margin-top: 10px;">
+                                <?php
+                                foreach ($cartItems as $item) {
+                                    $itemId = $item['id'];
+                                    $itemName = $item['name'];
+                                    $itemValue = $item['value'];
+                                    $itemImage = $item['image'];
 
+                                ?>
+                                    <div style="display: flex; align-items: center; gap: 15px;">
+                                        <img style="width: 50px;" src="<?= $itemImage ?>" alt="book-img" />
+                                        <div style="display: flex; flex-direction:column;">
+                                            <p style="font-size: 14px">Produto: <?= $itemName ?></p>
+                                            <p style="font-size: 14px">Valor: R$ <?= $itemValue ?></p>
+                                        </div>
+                                        <div>
+                                            <button data-id="<?= $itemId ?>" class="del-checkout-cart" style="cursor: pointer; border: none; outline:none; background-color: transparent;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-trash" viewBox="0 0 16 16">
+                                                    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                                    <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                                </svg></button>
+                                        </div>
+                                    </div>
+                                <?php
+                                }
+                                ?>
+                            </div>
+                        <?php
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -113,10 +154,6 @@ ini_set('display_errors', 1);
         </div>
 
         <div class="modal-cart-content">
-
-            <?php
-            $cartItems = isset($_SESSION['cart_items']) ? $_SESSION['cart_items'] : array();
-            ?>
             <?php
             if (empty($cartItems)) {
             ?>

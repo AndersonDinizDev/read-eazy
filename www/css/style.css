@@ -1206,6 +1206,10 @@ section {
   border: 1px solid #d3d3d3;
   width: 250px;
   height: 250px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #finish-checkout {
