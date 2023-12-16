@@ -31,7 +31,7 @@ ini_set('display_errors', 1);
             <a href="#" class="logo"> <i class="fas fa-book"></i> ReadEazy </a>
 
             <form action="" class="search-form">
-                <input type="search" name="" placeholder="search here..." id="search-box">
+                <input type="search" name="" placeholder="Procure aqui.." id="search-box">
                 <label for="search-box" class="fas fa-search"></label>
             </form>
 
