@@ -285,7 +285,7 @@ ini_set('display_errors', 1);
 
                 <div class="content">
                     <h3>até 75% de desconto</h3>
-                    <p>Site Criado para o Projeto de TCC do IFRJ CAMPUS NITERÓI - ALUNO: MATHEUS CARVALHO</p>
+                    <p>Explorando Universos Literários: Encontre sua Próxima Aventura entre Nossos Livros com Descontos Imperdíveis!</p>
                     <a href="#" class="btn">Compre agora</a>
                 </div>
 
@@ -465,7 +465,7 @@ ini_set('display_errors', 1);
                 <div class="swiper-slide box">
                     <img src="image/pic-4.png" alt="">
                     <h3>Manuela</h3>
-                    <p>Tenho vários livros infantis e queria doar para instituições caridosas ou escolas, entrar em contato manucarvalho4@gmail.com </p>
+                    <p>Tenho vários livros infantis e queria doar para instituições caridosas ou escolas, entrar em contato</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -478,7 +478,7 @@ ini_set('display_errors', 1);
                 <div class="swiper-slide box">
                     <img src="image/pic-5.png" alt="">
                     <h3>Matheus</h3>
-                    <p>Em posse de livros do pequeno principe, entre em contato para mais detalhes matheusrcarv@gmail.com</p>
+                    <p>Em posse de livros do pequeno principe, entre em contato para mais detalhes</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -613,9 +613,9 @@ ini_set('display_errors', 1);
 
             <div class="box">
                 <h3>Informações de contato</h3>
-                <a href="#"> <i class="fas fa-phone"></i> +55 21 99584 0294 </a>
-                <a href="#"> <i class="fas fa-phone"></i> +55 21 99584 0294 </a>
-                <a href="#"> <i class="fas fa-envelope"></i> matheusrcarvalho3@gmail.com </a>
+                <a href="#"> <i class="fas fa-phone"></i> +55 21 00000 0000 </a>
+                <a href="#"> <i class="fas fa-phone"></i> +55 21 00000 0000 </a>
+                <a href="#"> <i class="fas fa-envelope"></i> teste@teste.com </a>
                 <img src="image/worldmap.png" class="map" alt="">
             </div>
 
@@ -629,7 +629,7 @@ ini_set('display_errors', 1);
             <a href="#" class="fab fa-pinterest"></a>
         </div>
 
-        <div class="credit"> criado por <span>Matheus Carvalho</span> </div>
+        <div class="credit"> criado por <span>Anderson Diniz</span> </div>
 
     </section>
 
