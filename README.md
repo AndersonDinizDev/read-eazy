@@ -19,7 +19,7 @@
 
 ## Descrição:
 
-Loja online para venda de livros.
+Uma loja online intuitiva, exclusivamente desenvolvida para atender às necessidades de uma instituição de ensino, oferecendo uma experiência de compra simplificada.
 
 ## ✨ Novidades:
 
