@@ -9,10 +9,6 @@ use MercadoPago\MercadoPagoConfig;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-require 'PHPMailer/src/Exception.php';
-require 'PHPMailer/src/PHPMailer.php';
-require 'PHPMailer/src/SMTP.php';
-
 MercadoPagoConfig::setAccessToken("TEST-4559123468904236-070219-d9dfc08291ce794c8d81025c8b989d91-153865232");
 
 $client = new PaymentClient();
