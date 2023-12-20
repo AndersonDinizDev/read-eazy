@@ -402,7 +402,7 @@ ini_set('display_errors', 1);
             <div class="content">
                 <h3>Oferta do dia</h3>
                 <h1>até 50% de desconto</h1>
-                <p>TCC</p>
+                <p>Não perca a chance de adquirir os títulos mais cativantes e diversificados, desde os clássicos atemporais até as obras mais contemporâneas. A leitura é uma jornada que enriquece a alma, e agora você pode embarcar nessa aventura por um preço mais do que especial.</p>
                 <a href="#" class="btn">Compre agora</a>
             </div>
 
@@ -427,7 +427,7 @@ ini_set('display_errors', 1);
                 <div class="swiper-slide box">
                     <img src="image/pic-1.png" alt="">
                     <h3>João</h3>
-                    <p>Tenho livros didatícos de Direito, entre em contato para mais detalhes joaopsoares@gmail.com</p>
+                    <p>Incrível variedade! Encontrei todos os meus autores favoritos em um só lugar. Com os descontos, minha biblioteca nunca esteve tão completa!</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -440,7 +440,7 @@ ini_set('display_errors', 1);
                 <div class="swiper-slide box">
                     <img src="image/pic-2.png" alt="">
                     <h3>Luana</h3>
-                    <p>tenho a saga inteira de Harry Potter para emprestar, entre em contanto para mais detalhes lugimenes@gmail.com</p>
+                    <p>Entrega rápida e livros impecáveis! Amei a facilidade de navegação no site. Recomendo a todos os amantes da leitura!</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -453,7 +453,7 @@ ini_set('display_errors', 1);
                 <div class="swiper-slide box">
                     <img src="image/pic-3.png" alt="">
                     <h3>Cláudio</h3>
-                    <p>Tenho alguns livros da saga Crepúsculo, interessados entrar em contato via claudiorosa@gmail,com</p>
+                    <p>Comprei um presente especial e fui surpreendido pela qualidade do serviço. Embalagem cuidadosa e atendimento excepcional. Minha nova loja de livros!</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -465,7 +465,7 @@ ini_set('display_errors', 1);
                 <div class="swiper-slide box">
                     <img src="image/pic-4.png" alt="">
                     <h3>Manuela</h3>
-                    <p>Tenho vários livros infantis e queria doar para instituições caridosas ou escolas, entrar em contato</p>
+                    <p>Os descontos são reais! Economizei muito e ainda pude explorar novos títulos. Estou ansioso para a próxima promoção!</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -478,7 +478,7 @@ ini_set('display_errors', 1);
                 <div class="swiper-slide box">
                     <img src="image/pic-5.png" alt="">
                     <h3>Matheus</h3>
-                    <p>Em posse de livros do pequeno principe, entre em contato para mais detalhes</p>
+                    <p>Meu refúgio literário online! Encontrei raridades e lançamentos a preços incríveis. Uma experiência única para quem ama ler!</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
@@ -491,7 +491,7 @@ ini_set('display_errors', 1);
                 <div class="swiper-slide box">
                     <img src="image/pic-6.png" alt="">
                     <h3>Sheyje</h3>
-                    <p>LTenho alguns livros de histórias japonesas que trouxe do meu país, entre em contato para mais detalhes sheyjemonagomi@gmail.com</p>
+                    <p>Experiência de compra nota 10! A entrega foi rápida, os livros chegaram em perfeito estado e ainda veio um marcador de páginas de brinde. Super satisfeito!</p>
                     <div class="stars">
                         <i class="fas fa-star"></i>
                         <i class="fas fa-star"></i>
