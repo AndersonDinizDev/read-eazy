@@ -9,7 +9,7 @@ use MercadoPago\MercadoPagoConfig;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-MercadoPagoConfig::setAccessToken("TEST-4559123468904236-070219-d9dfc08291ce794c8d81025c8b989d91-153865232");
+MercadoPagoConfig::setAccessToken("KEY-HERE");
 
 $client = new PaymentClient();
 
